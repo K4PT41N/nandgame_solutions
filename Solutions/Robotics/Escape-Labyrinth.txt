@@ -1,0 +1,57 @@
+# CONST DEFINES
+DEFINE IS_OBST 0b_0000_0001_0000_0000
+DEFINE IS_TURNING 0b_0000_0010_0000_0000
+DEFINE IS_MOVING 0b_0000_0100_0000_0000
+DEFINE MOVE_FORWARD 0b_0100
+DEFINE TURN_LEFT 0b_1000
+DEFINE TURN_RIGHT 0b_0001_0000
+DEFINE PERIPHERALS 0x7fff
+
+# Checks front obstacle
+LABEL REPEAT_OBST
+A = PERIPHERALS
+D = *A
+A = IS_OBST
+D = D & A
+A = TRY_TURN
+D; JGT
+# Move forward
+A = PERIPHERALS
+D = *A
+A = MOVE_FORWARD
+D = D | A
+A = PERIPHERALS
+*A = D
+# Wait for movement to finish
+# then check front obstacle again
+LABEL WAIT_MOVE
+A = PERIPHERALS
+D = *A
+A = IS_MOVING
+D = D & A
+A = WAIT_MOVE
+D; JGT
+A = REPEAT_OBST
+JMP
+# Attempt a left turn
+LABEL TRY_TURN
+A = PERIPHERALS
+D = *A
+A = TURN_LEFT
+D = D | A
+A = PERIPHERALS
+*A = D
+# Wait for turn to finish then
+# check front obstacle again
+LABEL WAIT_TURN
+A = PERIPHERALS
+D = *A
+A = IS_TURNING
+D = D & A
+A = WAIT_TURN
+D; JGT
+A = REPEAT_OBST
+JMP
+
+
+
