@@ -1,0 +1,157 @@
+# defines
+DEFINE network 0x6001
+DEFINE data_bit_map 0b1
+DEFINE sync_bit_map 0b10
+DEFINE PIXEL_MAP_ADDR_START 0x5010
+DEFINE PIXEL_MAP_ADDR_END 0x6000
+DEFINE sync_current_addr 0xa
+DEFINE data_current_addr 0xb
+DEFINE message_index_addr 0xc
+DEFINE current_pixel_addr 0xd
+DEFINE current_pixel_map_addr 0xe
+DEFINE message_packet_length 16
+DEFINE current_pixel_index_inc 0x20
+
+# execution
+# store current index packet + control
+A = message_packet_length
+D = A
+A = message_index_addr
+# add one for control bit
+*A = D + 1
+
+# set current pixel map addr
+A = PIXEL_MAP_ADDR_START
+D = A
+A = current_pixel_map_addr
+*A = D
+
+LABEL LOOP
+
+# wait for sync switch
+label wait_sync_switch
+# extract the sync bit
+A = network
+D = *A
+A = sync_bit_map
+D = D & A
+# sync bit is 1
+A = sync_bit_on
+D; JNE
+# sync bit is 0
+A = sync_bit_off
+D; JEQ
+# check switch when sync bit is 1
+label sync_bit_on
+A = sync_current_addr
+D = *A
+# sync switched, exit wait
+A = end_wait_sync_switch
+D; JEQ
+# sync didn't switch, wait again
+A = wait_sync_switch
+JMP
+# check stored sync bit when sync bit is 0
+label sync_bit_off
+A = sync_current_addr
+D = *A
+# sync switched, exit wait
+A = end_wait_sync_switch
+D; JNE
+# sync didn't switch, wait again
+A = wait_sync_switch
+JMP
+label end_wait_sync_switch
+
+# update stored sync bit
+A = sync_current_addr
+*A = ~*A
+
+# extract the data bit
+A = network
+D = *A
+A = data_bit_map
+D = D & A
+
+# temporarily store current data bit
+A = data_current_addr
+*A = D
+
+# check if control bit or pixel bit
+A = message_index_addr
+D = *A
+A = message_packet_length
+D = D - A
+A = is_control_bit
+D; JGT
+A = is_pixel_bit
+D; JLE
+
+label is_control_bit
+A = data_current_addr
+D = *A
+A = end
+D; JEQ
+# decrement index
+A = message_index_addr
+*A = *A - 1
+D = *A
+A = LOOP
+JMP
+
+#build pixel
+label is_pixel_bit
+A = current_pixel_addr
+D = *A
+A = data_current_addr
+D = D + *A
+A = current_pixel_addr
+*A = D
+
+# decrement index
+A = message_index_addr
+*A = *A - 1
+D = *A
+A = do_write_and_reset
+D; JEQ
+A = left_shift_by_sum
+D; JNE
+
+# write data to display and reset
+# index and pixel value
+label do_write_and_reset
+#init.stack
+#call test_loop 0
+# get current pixel value
+A = current_pixel_addr
+D = *A
+# write to current pixel map addr
+A = current_pixel_map_addr
+A = *A
+*A = D
+# increment current pixel map addr
+A = current_pixel_index_inc
+D = A
+A = current_pixel_map_addr
+*A = D + *A 
+# reset index and pixel data
+A = current_pixel_addr
+*A = 0
+# store current index packet + control
+A = message_packet_length
+D = A
+A = message_index_addr
+# add one for control bit
+*A = D + 1
+A = LOOP
+JMP
+
+# left shift pixel value through sum
+label left_shift_by_sum
+A = current_pixel_addr
+D = *A
+D = D + *A
+*A = D
+A = LOOP
+JMP
+label end
