@@ -1,0 +1,31 @@
+# Assembler code 
+push.static ARGS
+push.static LOCALS
+push.value after
+A = SP
+D = *A
+A = argumentCount
+D = D - A
+A = 3
+D = D - A
+A = ARGS
+*A = D
+goto functionName
+label after
+A = ARGS
+D = *A
+A = TEMP_ADDR
+*A = D
+pop.D
+A = LOCALS
+*A = D
+pop.D
+A = ARGS
+*A = D
+A = TEMP_ADDR
+D = *A
+A = SP
+*A = D
+A = RETVAL
+D = *A
+push.D
