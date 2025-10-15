@@ -1,1 +1,8 @@
 # Arithmetics
+In this subcategory you have to implement Addition, Subtraction and Comparison operations using Logic Gates. There wil be levels with multiple outputs.
+
+## Half Adder
+This is not a very hard level to solve. Basically you have to implement the addition of two bits using Logic Gates. When both inputs are 0, output is 00. When one of the inputs is 1, the output is 01. When both inputs are 1, the output is 10, which is the binary representation of number 2. The trick is to have the first bit of the output set to 1 and the second bit set to 0 when both inputs are 1. For this we can use a gate for each output bit. So for the first bit we would get 1 only when both inputs are 1. Clearly the And gate works here. Now for the second bit, we want it set to 1 when one input is 1 and the other 0. The Xor gate works here. If we were to use the Or gate, the second output bit would be 1 when both inputs are 1 and that doesn't work, it has to be 0. So the first solution is to use And gate for the first output bit and Xor gate for the second output bit. Getting the optimal solution requires simplifying the circuits by reducing the number of Nand gates after replacing the components with parts using some intuition, eventually reaching a result similar to the [Xor optimal solution](../Logic-Gates/logic_gates.md#xor).
+<img src="Half-Adder.png" alt="Half Adder" width="928"/>
+
+## Full Adder
