@@ -7,6 +7,7 @@ This is not a very hard level to solve. Basically you have to implement the addi
 
 ## Full Adder
 In this level we encounter the challenge of adding 3 bits instead of 2. The maximum value we would get by adding all the input bits is 11 which is the binary representation of number 3. As a start I added together **b** and **c** inputs using an Add component. So far we have half of the solution done. Now we have to deal with input **a** in order to have a complete solution. I added another Add component to which I attached input **a** and bit **l** from previous Add component. If we use the outputs from the second Add component as solutions, the level is still not fully solved, because we left out the output **h** from the first Add component and so, when we try to add three 1's or only inputs **b** and **c** set to 1, we don't get the desired result. We use another Add component, and we connect it to the other bit of the first Add component, the **h** output bit, and the **h** output bit of the second Add component. The final output comes from the **l** bits of both second and third Add component. We have managed to add all three bits and as a result we got a Full Adder.
+
 <img src="Full-Adder-First-Solution.png" alt="Full Adder First Solution" width="480"/>
 
 For the optimal solution the same strategy as before is used, just replace by parts all the components, get rid of redundant connections and apply some intuition in order to get the same results with fewer Nand gates.
