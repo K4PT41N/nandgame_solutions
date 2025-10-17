@@ -14,3 +14,8 @@ In this level we encounter the challenge of adding 3 bits instead of 2. The maxi
 For the optimal solution the same strategy as before is used, just replace by parts all the components, get rid of redundant connections and apply some intuition in order to get the same results with fewer Nand gates.
 
 <img src="Full-Adder.png" alt="Full Adder" width="928"/>
+
+## Multi-bit Adder
+This is a very easy level. We have to add 3 numbers, where two of these numbers are represented by 2-bit inputs and one number is represented by 1 bit. The first bit of the output has to be the sum of the least significant bits of the 2-bit inputs and the carry input. We can use the Full Adder component for that. Then the other two bits of the output are going to be calculated by using another Full Adder connected to the most significant bits of the 2-bit inputs and the most significant bit of the result from the first Full Adder. This way we solve the problem and we also have an optimal solution using just two Full Adder components.
+
+<img src="Multi-bit-Adder.png" alt="Multi-bit Adder" width="928"/>
