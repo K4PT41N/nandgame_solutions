@@ -8,3 +8,8 @@ Based on a single bit, one input or the other will be the output. When bit **s**
 
 To get the optimal solution, replace by parts all the components and remove redundant Nand Gates. You will get the following solution.
 <img src="Selector.png" alt="Selector" width="928"/>
+
+## Switch
+This is a very easy level, because the solution is the same as [Selector](switching.md#selector), but without Or Gate, because we don't need to combine the results of the And Gates. After replacing by parts all the components and after removing redundant Nand Gates you will get the optimal solution.
+
+<img src="Switch.png" alt="Switch" width="928"/>
