@@ -9,12 +9,12 @@ DEFINE data_current_addr 0xb
 DEFINE message_index_addr 0xc
 DEFINE current_pixel_addr 0xd
 DEFINE current_pixel_map_addr 0xe
-DEFINE message_packet_length 16
+DEFINE message_payload_length 16
 DEFINE current_pixel_index_inc 0x20
 
 # execution
 # store current index packet + control
-A = message_packet_length
+A = message_payload_length
 D = A
 A = message_index_addr
 # add one for control bit
@@ -80,7 +80,7 @@ A = data_current_addr
 # check if control bit or pixel bit
 A = message_index_addr
 D = *A
-A = message_packet_length
+A = message_payload_length
 D = D - A
 A = is_control_bit
 D; JGT
@@ -120,8 +120,6 @@ D; JNE
 # write data to display and reset
 # index and pixel value
 label do_write_and_reset
-#init.stack
-#call test_loop 0
 # get current pixel value
 A = current_pixel_addr
 D = *A
@@ -138,7 +136,7 @@ A = current_pixel_map_addr
 A = current_pixel_addr
 *A = 0
 # store current index packet + control
-A = message_packet_length
+A = message_payload_length
 D = A
 A = message_index_addr
 # add one for control bit
