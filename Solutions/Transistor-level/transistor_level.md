@@ -3,7 +3,7 @@ In this category you learn about logic gates at the transistor level.
 
 ## Solutions description
 Using components from the Toolbox, we will need to implement Logic Gates, but instead of analog gates, we use transistors as switches. We will use the **PMOS** and **NMOS** transistors. **PMOS** transistor connects the input to the output when **off** input is 0 and disconnects when 1. **NMOS** transistor connects the input to the output when **on** input is 1 and disconnects when 0. We also use wire junctions to combine multiple outputs. This junction will cause a short circuit when one input is 1 and the other 0.
-[Function calls](../Function-calls/function_calls.md#function-calls-levels)
+
 ## Nand (CMOS)
 In this level we will have to connect 4 outputs, two being the input switches and the other two being the Power (always 1) and the Ground (always 0). We will first connect two **PMOS**  transistors to the input switches and to the Power input. We then apply a junction on these two transistors. We can see that we managed to solve 3 out of 4 cases. The case that is left is when both switch inputs are 1. For this we need two more transistors, a **NMOS** and a **PMOS**, which are connected to the junction. Then we connect the Power to **NMOS** and the Ground to **PMOS**. We use another junction on these two transistors.  and we get the final result. This way, when both input switches are 1, the first junction is disconnected, and the **NMOS** transistor will also be disconnected. Only **PMOS** will be connected and will output 0 from the Ground input. 
 
