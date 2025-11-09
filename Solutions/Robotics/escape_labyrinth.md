@@ -1,4 +1,4 @@
-# Escape Labyrinth
+# Escape Labyrinth level
 In this level we use Assembly code to program a robot exit a labyrinth using controls and sensors. 
 
 ## Problem explanation

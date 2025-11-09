@@ -1,4 +1,4 @@
-# Compiler
+# Compiler levels
 In this subcategory, we learn about tokenizer, code language grammar and code generation.
 
 ## Tokenize

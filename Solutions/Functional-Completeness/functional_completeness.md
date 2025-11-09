@@ -1,4 +1,4 @@
-# Transistor Level
+# Functional Completeness levels
 In this category you learn about implementing alternatives to **Nand Gate**.
 
 ## Solutions description

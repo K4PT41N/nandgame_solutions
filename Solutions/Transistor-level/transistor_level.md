@@ -1,4 +1,4 @@
-# Transistor Level
+# Transistor levels
 In this category you learn about logic gates at the transistor level.
 
 ## Solutions description

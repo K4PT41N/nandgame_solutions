@@ -1,4 +1,4 @@
-# Network
+# Network level
 In this level we get to do a project using Assembly code. The problem is to print an image on a display using pixels transferred from another computer device.
 
 ## Problem explanation

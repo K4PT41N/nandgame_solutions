@@ -1,4 +1,4 @@
-# High-level Language Levels
+# High-level Language levels
 In this category we learn about how compilers work and how different parts of the compiling process are implemented and what do they mean.
 
 ## Solutions description
