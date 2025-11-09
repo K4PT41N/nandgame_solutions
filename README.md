@@ -4,3 +4,4 @@ Nandgame solutions for Hardware, Software and Optional levels with explanations.
 - [Assembler](Solutions/Assembler/assembler_levels.md)
 - [Network](Solutions/Network/network.md)
 - [Robotics](Solutions/Robotics/escape_labyrinth.md)
+- [Stack Machine](Solutions/Stack-Machine/stack_machine.md)
