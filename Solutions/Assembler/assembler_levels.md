@@ -1,4 +1,4 @@
-# Assembler Levels
+# Assembler levels
 In this category you learn about machine code and Assembly code.
 
 ## Solutions description
