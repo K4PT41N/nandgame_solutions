@@ -20,7 +20,7 @@ Here we use the same solution but we leave the bit-15 unchanged.
 <img src="Arithmetic-Right-Shift.png" alt="Logical Right Shift" width="928"/>
 
 ## Barrel Left Shift
-In this level we get to implement multiple left shifting. The input is a 4-bit number (0-15) which determines the number of times the number will shift to the left. For each bit used for shifting multiple times we apply 2^i shifts depending on the bit position. In the en we end up with a working solution. 
+In this level we get to implement multiple left shifting. The input is a 4-bit number (0-15) which determines the number of times the number will shift to the left. For each bit used for shifting multiple times we apply 2^i shifts where **i** is the bit position in the number. In the end we end up with a working solution. 
 
 <img src="Barrel-Shift-Left.png" alt="Barrel Shift Left" width="928"/>
 
