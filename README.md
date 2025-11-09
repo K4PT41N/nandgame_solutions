@@ -8,3 +8,4 @@ Nandgame solutions for Hardware, Software and Optional levels with explanations.
 - [High-level Language](Solutions/High-level-language/high_level_language.md)
 - [Transistor Level](Solutions/Transistor-level/transistor_level.md)
 - [Functional Completeness](Solutions/Functional-Completeness/functional_completeness.md)
+- [Bit Shifts](Solutions/Bit-shifts/bit_shifts.md)
