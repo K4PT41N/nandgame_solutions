@@ -229,7 +229,7 @@ function getChar 0
     label loop_release
     A = 0x6000
     D = *A
-    A = loop_press
+    A = loop_release
     D; JNE
 return
 ```
