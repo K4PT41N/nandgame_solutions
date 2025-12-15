@@ -9,3 +9,4 @@ Nandgame solutions for Hardware, Software and Optional levels with explanations.
 - [Transistor Level](Solutions/Transistor-level/transistor_level.md)
 - [Functional Completeness](Solutions/Functional-Completeness/functional_completeness.md)
 - [Bit Shifts](Solutions/Bit-shifts/bit_shifts.md)
+- [Advanced Arithmetics and Floating Point](Solutions/Advanced-Arithmetics-and-Floating-Point/advanced_arithmetics_and_floating_point.md)
