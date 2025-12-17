@@ -1,4 +1,4 @@
-# Bit shifts levels
+# Multitasking CPU levels
 In this category we learn about multitasking at hardware level.
 
 ## Solutions description
