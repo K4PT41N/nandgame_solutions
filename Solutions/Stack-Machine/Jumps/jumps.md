@@ -1,8 +1,9 @@
+
 # Jumps
-In this subcategory we simplify jump operations by reducing code through macros.
+In this subcategory, we simplify jump operations by reducing code using macros.
 
 ## Goto
-In this level we implement the **goto** macro, which only takes a label and jumps at the label address.
+In this level, we implement the **goto** macro, which only takes a label and jumps to the label address.
 ```
 A = label
 JMP
@@ -20,7 +21,7 @@ label end:
 ```
 
 ## If Goto
-Here we have to implement a conditional jump using the top value on the stack. If its non-zero the program jumps to the label location.
+Here, we have to implement a conditional jump using the top value on the stack. If it's non-zero, the program jumps to the label location.
 ```
 pop.D
 A = label
