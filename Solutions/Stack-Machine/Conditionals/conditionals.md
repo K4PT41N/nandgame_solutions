@@ -1,8 +1,8 @@
-# Conditionals levels
-In this subcategory we get to implement conditional functions using the macros we've learned: and, or, not and equals. Read about [Function calls](../Function-calls/function_calls.md#function-calls-levels) first.
+# Conditionals Levels
+In this subcategory, we implement conditional functions using the macros we've learned: and, or, not, and equals. Read about [Function calls](../Function-calls/function_calls.md#function-calls-levels) first.
 
 ## And
-This is an easy function to implement. We push two arguments, and perform an Bit-And operation on them. The result is pushed on the stack.
+This is an easy function to implement. We push two arguments and perform an **And** operation on them. The result is pushed onto the stack.
 ```
 function and 0
     push.argument 0
@@ -24,13 +24,17 @@ call and 2
 ```
 
 ## Or
-This function is similar to the previous one, but instead of Bit-And we use Bit-Or operation.
+This function is similar to the previous one, but instead of **And** we use the **Or** operation.
+
 ```
-init.stack
-push.value x0FF0
-push.value x0F0F
-call and 2
-# inspect top of stack. Should be 0F00.
+function or 0
+    push.argument 0
+    push.argument 1
+    pop.D
+    pop.A
+    D = D | A
+    push.D
+return
 ```
 
 Example:
@@ -43,7 +47,7 @@ call or 2
 ```
 
 ## Not
-This function inverts the bits of the argument. Also easy to implement.
+This function inverts the bits of the argument. It is also easy to implement.
 ```
 function not 0
     push.argument 0
@@ -62,7 +66,7 @@ call not 1
 ```
 
 ## Equals
-Here we have to implement a function that returns 0 if two values are equal and 0xFFFF otherwise. The arguments that were pushed are first subtracted. If the result is not 0, we push 0xFFFF, otherwise we push 0.
+Here we have to implement a function that returns 0xFFFF if two values are equal and 0 otherwise. The arguments that were pushed are first subtracted. If the result is 0, we push 0xFFFF; otherwise, we push 0.
 ```
 function equals 0
     push.argument 0
@@ -94,7 +98,7 @@ return
 
 Example:
 ```
-nit.stack
+init.stack
 push.value 7
 push.value 7
 call equals 2
