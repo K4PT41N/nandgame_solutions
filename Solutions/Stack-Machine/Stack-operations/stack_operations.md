@@ -1,8 +1,8 @@
 # Stack operations
-In this subcategory we have to implement operations on the memory stack, like initializing the stack, storing and extracting values in an organize way using FIFO model (First in, First out).
+In this subcategory we have to implement operations on the memory stack, like initializing the stack, storing and extracting values in an organize way using LIFO principle (Last in, First out).
 
 ## Init stack
-To implement a stack first we need to store somewhere the memory address were the stack starts. The address of the stack is the value of the **Stack Pointer**(SP), which is 0x100, and this value will be where we start storing values. In the future, we will have to increment the **Stack Pointer** each time we push a value and decrement it each time we pop a value. The **Stack Pointer** will always point at memory location under the last element available on the stack.
+To implement a stack first we need to store somewhere the memory address were the stack starts. The address of the stack is the value of the **Stack Pointer**(SP), which is 0x100, and this value will be where we start storing values. In the future, we will have to increment the **Stack Pointer** each time we push a value and decrement it each time we pop a value. The **Stack Pointer** will always point at memory location that stores the last element pushed on the stack.
 ```
 A = 0x100
 D = A
@@ -16,7 +16,7 @@ init.stack
 ```
 
 ## Push D
-Implementing the push operation is easy. We access the Stack Pointer memory address where we write the value from D register, and then we increment the **Stack Pointer** for future operations.
+Implementing the push operation is easy. We access the **Stack Pointer** memory address where we write the value from **D** register, and then we increment the **Stack Pointer** for future operations.
 ```
 A = SP
 A = *A
@@ -25,7 +25,7 @@ A = SP
 *A = *A+1
 ```
 
-This will simply drastically storing values on memory:
+This is how we store values on stack memory:
 ```
 init.stack
 D = 1
@@ -33,7 +33,7 @@ push.d
 ```
 
 ## Pop D
-Another easy task is the pop operation. The idea is to extract the last value from the stack and store it on D register. This is basically the reverse of **push.d** operation. We access the address of the last stack value, store it on D Register, then decrement the **Stack Pointer**.
+Another easy task is the **pop** operation. The idea is to extract the last value from the stack and store it on **D** register. This is basically the reverse of **push.d** operation. We access the address of the last pushed value, store it on **D** register, then decrement the **Stack Pointer**.
 ```
 A = SP
 A = *A - 1
@@ -42,7 +42,7 @@ A = SP
 *A = *A - 1
 ```
 
-After pushing a value on the stack, then storing a value on Register D, then popping the stack on register D, we would expect register D to store the value from the stack.
+After pushing a value on the stack, then popping the value on register **D**, we expect register **D** to store the value from the stack.
 ```
 init.stack
 D = 1
@@ -54,7 +54,7 @@ pop.D
 ```
 
 ## Pop A
-We can implement a different pop operation, one that doesn't use the register D. This way we can pop values without affecting the D register.
+We can implement a different **pop** operation, one that doesn't use the register **D**. This way we can pop values without affecting the **D** register.
 ```
 A = SP
 *A = *A - 1
@@ -75,7 +75,7 @@ pop.A
 ```
 
 ## Push Value
-We simplify the push operation even more, by adding the assignment of the value to the D register inside the push operation.
+We simplify the **push** operation even more, by assigning the **value** input to the **D** register through register **A** and then pushing from register **D**.
 ```
 A = value
 D = A
@@ -90,7 +90,7 @@ push.value 114
 ```
 
 ## Push Static
-In this level we get to implement a push operation that stores a value from a memory address on the stack. This operation will take a memory address and push the value that is stored there directly on the stack.
+In this level we get to implement a **push** operation that stores a value from a memory address on the stack. This operation will take a memory address and push the value that is stored there directly on the stack.
 ```
 A = address
 D = *A
@@ -110,7 +110,7 @@ push.static 16
 ```
 
 ## Pop Static
-This is the reverse of the push.static operation, in which we pop a value on the address passed to the macro.
+This is the reverse of the **push.static** operation, in which we pop a value on the address passed to the macro.
 ```
 pop.D
 A = address
@@ -126,7 +126,7 @@ pop.static 0x16
 ```
 
 ## Push Memory
-This is another special push operation. I pushes the value at the address stored on the top of the stack. So it first pops the stack, reads the value on the address that was popped and pushes that value on the stack.
+This is another special **push** operation. It pushes the value at the address stored on the top of the stack. So it first pops the stack, reads the value on the address that was popped and pushes that value on the stack.
 ```
 pop.D
 A = D
@@ -149,7 +149,7 @@ push.memory
 ```
 
 ## Pop Memory
-This pop operation is easy to implement. We pop two values and the second value popped is the address at which we store the first value popped.
+This **pop** operation is easy to implement. We pop two values and the second value popped is the address at which we store the first value popped.
 ```
 pop.D
 pop.A
