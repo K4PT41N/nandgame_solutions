@@ -1,10 +1,10 @@
 
 # Arithmetics
-In this subcategory, you have to implement addition, subtraction, and comparison operations using logic gates. Some levels will have multiple outputs.
+In this subcategory, we have to implement addition, subtraction, and comparison operations using logic gates. Some levels will have multiple outputs.
 
 
 ## Half Adder
-This is not a very hard level to solve. Basically, you have to implement the addition of two bits using logic gates. When both inputs are 0, both outputs are 0. When one of the inputs is 1, the first output is 0 and the second output is 1. When both inputs are 1, the first output is 1 and the second output is 0, which is the binary representation of the number 2. The trick is to have the first output set to 1 and the second output set to 0 when both inputs are 1. For this, we can use a gate for each output bit. For the first output, we get 1 only when both inputs are 1. Clearly, the **And** gate works here. For the second output, we want it set to 1 when one input is 1 and the other is 0. The **Xor** gate works here. If we were to use the Or gate, the second output would be 1 when both inputs are 1, and that wouldn't work, because it has to be 0. So the first solution is to use an **And** gate for the first output and an **Xor** gate for the second output. Getting the optimal solution requires simplifying the circuits by reducing the number of **Nand** gates after replacing the components by parts using some intuition, eventually reaching a result similar to the [Xor optimal solution](../Logic-Gates/logic_gates.md#xor).
+This is not a very hard level to solve. Basically, we have to implement the addition of two bits using logic gates. When both inputs are 0, both outputs are 0. When one of the inputs is 1, the first output is 0 and the second output is 1. When both inputs are 1, the first output is 1 and the second output is 0, which is the binary representation of the number 2. The trick is to have the first output set to 1 and the second output set to 0 when both inputs are 1. For this, we can use a gate for each output bit. For the first output, we get 1 only when both inputs are 1. Clearly, the **And** gate works here. For the second output, we want it set to 1 when one input is 1 and the other is 0. The **Xor** gate works here. If we were to use the Or gate, the second output would be 1 when both inputs are 1, and that wouldn't work, because it has to be 0. So the first solution is to use an **And** gate for the first output and an **Xor** gate for the second output. Getting the optimal solution requires simplifying the circuits by reducing the number of **Nand** gates after replacing the components by parts using some intuition, eventually reaching a result similar to the [Xor optimal solution](../Logic-Gates/logic_gates.md#xor).
 
 <img src="Half-Adder.png" alt="Half Adder" width="928"/>
 
@@ -27,7 +27,7 @@ This is a very easy level. We have to add 3 numbers, where two of these numbers 
 
 
 ## Increment
-Another easy level. You have to increment the input by 1. You can use the **Add** component, which takes two 16-bit inputs and a carry bit. Connect the **Add** component to the 16-bit input and the carry bit input to 1. How do we get 1 using logic gates? We use an **Invert** gate without attaching an input to it. This way, it always outputs 1. As a result, you add the 16-bit input and the result of the **Invert** gate, which is 1. Voilà, you managed to increment a number by one.
+Another easy level. We have to increment the input by 1. We can use the **Add** component, which takes two 16-bit inputs and a carry bit. Connect the **Add** component to the 16-bit input and the carry bit input to 1. How do we get 1 using logic gates? We use an **Invert** gate without attaching an input to it. This way, it always outputs 1. As a result, we add the 16-bit input and the result of the **Invert** gate, which is 1. Voilà, we managed to increment a number by one.
 
 <img src="Increment.png" alt="Increment" width="928"/>
 
