@@ -27,7 +27,7 @@ In this level, we have to implement the register backup when an interrupt happen
 <img src="Register-with-backup.png" alt="Register with backup" width="928"/>
 
 ## Program Counter
-This level is fairly easy, because you have the main part available in the toolbox. We implement a program counter that works with a register component that has backup. This way, we will have a **Program Counter** with a **Program Counter Backup**. We increment the counter based on the **j** input. When the mode is switched to kernel (interrupt), the program counter will take the value of **X0**, which is 0. The **st** input of the register component is always 1. Finally, we get the solution.
+This level is fairly easy, because we have the main part available in the toolbox. We implement a program counter that works with a register component that has backup. This way, we will have a **Program Counter** with a **Program Counter Backup**. We increment the counter based on the **j** input. When the mode is switched to kernel (interrupt), the program counter will take the value of **X0**, which is 0. The **st** input of the register component is always 1. Finally, we get the solution.
 
 <img src="Program-counter.png" alt="Program counter" width="928"/>
 

@@ -1,7 +1,7 @@
 
 # Computer Levels
 ## Introduction
-In this category, you learn about the CPU and memory, and how they are built using logic gates and more complex logic abstractions constructed from these gates.
+In this category, we learn about the CPU and memory, and how they are built using logic gates and more complex logic abstractions constructed from these gates.
 
 
 ## Solutions Description
