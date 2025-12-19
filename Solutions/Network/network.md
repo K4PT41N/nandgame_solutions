@@ -1,5 +1,5 @@
 # Network level
-In this level we get to do a project using Assembly code. The problem is to print an image on a display using pixels transferred from another computer device.
+In this level we get to do a project using Assembly code. The problem requires to print an image on a display using pixels transferred from another computer device.
 
 ## Problem explanation
 We have to print an image using the data transferred from another computer device. Our computer device receives data using 2 bits, the **sync** bit and the **data** bit. Over time these bits change and we have to process them in order to get the final result. The way we process the data is by evaluating the **sync** bit whenever it changes, from 0 to 1 or from 1 to 0. When we detect a switch on the **sync** bit we can then process the **data** bit. So for example we have the **sync** bit on 0 and the **data** bit on 1, and later when the **sync** bit switches to 1, we read the **data** bit and process it.
@@ -23,7 +23,7 @@ DEFINE message_payload_length 16
 DEFINE current_pixel_index_inc 0x20
 ``` 
 
-We first store some values that we will need later: message length and address where we want to start drawing the image (must be between 0x4000 and 0x6000). First I access the address that I want to use for storing the bit length of the message, which is 16 + 1 bits. 
+We first store some values that we will need later: message length and address where we want to start drawing the image (must be between 0x4000 and 0x6000). First we access the address that we want to use for storing the bit length of the message, which is 16 + 1 bits. 
 ```
 # store current index packet + control
 A = message_payload_length
@@ -33,7 +33,7 @@ A = message_index_addr
 *A = D + 1
 ```
 
-Then I access the address that I want to use for storing the display pixel address on which I will start setting pixels from the transmitted data. This address will store the current pixel I will draw and will be incremented for every received message.
+Then we access the address that we want to use for storing the display pixel address on which we will start setting pixels from the transmitted data. This address will store the current pixel we will draw and will be incremented for every received message.
 ```
 # set current pixel map addr
 A = PIXEL_MAP_ADDR_START
@@ -64,7 +64,7 @@ A = sync_bit_off
 D; JEQ
 ```
 
-In case **sync** bit is 1 we check the previous sync bit we stored. If its equal to 0 we exit the waiting loop for the sync switch.
+In case **sync** bit is 1 we check the previous **sync** bit we stored. If its equal to 0 we exit the waiting loop for the **sync** switch.
 ```
 # check switch when sync bit is 1
 label sync_bit_on
@@ -75,7 +75,7 @@ A = end_wait_sync_switch
 D; JEQ
 ```
 
-In the case where the sync bit is 0 we do the same, but we exit the switching waiting loop if the stored sync bit is 1.
+In the case where the **sync** bit is 0 we do the same, but we exit the switching waiting loop if the stored **sync** bit is 1.
 ```
 # check stored sync bit when sync bit is 0
 label sync_bit_off
@@ -144,7 +144,7 @@ A = LOOP
 JMP
 ```
 
-In case the data bit is a pixel bit, we first add it to the current stored pixel data, and store it again.
+In case the **data** bit is a pixel bit, we first add it to the current stored pixel data, and store it again.
 ```
 #build pixel
 label is_pixel_bit
